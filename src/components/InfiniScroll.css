@@ -1,0 +1,20 @@
+*
+{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+html,body{
+    background-color: seashell;
+}
+.box
+{
+    width: 20%;
+    margin: 2em auto;
+
+    border: 2px black solid;
+    padding: .5em .5em .5em .5em ;
+}
+.mess
+{
+    text-align: center;
+}
