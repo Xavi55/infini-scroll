@@ -71,19 +71,24 @@ export default function InfiniScroll()
     {
         setLoading(1)
         //pull from storeage, simulate API call
-        setTimeout(() => {
-            if(iCount>=data.length-1)
+        setTimeout(() => 
+        {
+            let newList=[]
+            for(let i=iCount;i<iCount+2;i++)
             {
-                setNoData(1)
+                if(data[i]!=undefined)
+                {
+                    newList.push(data[i])
+                }
+                else
+                {
+                    setNoData(1)
+                }
             }
-            else
-            {
-                let newList=[]
-                newList = userList.concat(data[iCount],data[iCount+1])
-                setiCount(iCount+2)//track last index loaded
-                setUserList(newList)
-                setPage(page+1)
-            }
+            //newList = userList.concat(data[iCount],data[iCount+1])
+            setiCount(iCount+2)//track last index loaded
+            setUserList([...userList].concat(newList))
+            setPage(page+1)
             setLoading(0)
         }, 1500);
     }
