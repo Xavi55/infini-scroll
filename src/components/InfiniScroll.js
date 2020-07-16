@@ -72,14 +72,15 @@ export default function InfiniScroll()
         setLoading(1)
         //pull from storeage, simulate API call
         setTimeout(() => {
-            if(page>=data.length/2)
+            if(iCount>=data.length-1)
             {
                 setNoData(1)
             }
             else
             {
-                let newList = userList.concat(data[iCount],data[iCount+1])
-                setiCount(iCount+2)
+                let newList=[]
+                newList = userList.concat(data[iCount],data[iCount+1])
+                setiCount(iCount+2)//track last index loaded
                 setUserList(newList)
                 setPage(page+1)
             }
@@ -100,17 +101,16 @@ export default function InfiniScroll()
                                 <strong>Last Name</strong>: {user.last_name}<br/>
                             </div>
                         </div>
-                        {loading ? <div className="mess">Loading...</div> :""}
                     </div>
                 ))    
             }
+            {loading ? <div className="mess">Loading...</div> :""}
             {noData ? <div className="mess">No more data.</div>:""}
             <br/><br/><br/><br/><br/><br/><br/>
             <br/><br/><br/><br/><br/><br/><br/>
             <br/><br/><br/><br/><br/><br/><br/>
             <br/><br/><br/><br/><br/><br/><br/>
             <br/><br/><br/><br/><br/><br/><br/>
-            <br/><br/><br/><br/><br/><br/>
         </div>
     )
 }
